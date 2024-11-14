@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/gnb_all.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Slick CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script src="./js/gnb_all.js"></script> 
+  <script src="./js/script.js"></script> 
+  <script src="./js/script_1.js"></script> 
+</head>
+<body>
+  <div id = "header-container">
+  <header>
+    <div class="inner">
+    <div id = "logo_area"><a href="/">
+        <img src="./img/logo.png" alt="" class="logoImg">
+    </a></div>
+    <h2 class="blind">주메뉴</h2>
+    <div id="hamburger-btn" class="hamburger"><i class="fa-solid fa-bars"></i></div>
+
+    
+    <nav>
+        <ul class="gnb clear gnb_pc">
+          <li><a href="#"><span>menu1
+            
+          </span></a>
+              <ul>
+                  <li><a href="#">menu1-1</a></li>
+                  <li><a href="#">menu1-2</a></li>
+              </ul>
+           
+          </li>
+          <li><a href="#"><span>menu2</span></a>
+           
+              <ul>
+                <li><a href="#">menu2-1</a></li>
+                <li><a href="#">menu2-2</a></li>
+                <li><a href="#">menu2-3</a></li>
+                <li><a href="#">menu2-4</a></li>
+              </ul>
+             
+          </li>
+          <li><a href="#"><span>menu3</span></a>
+            
+              <ul>
+                <li><a href="#">menu3-1</a></li>
+                <li><a href="#">menu3-2</a></li>
+              </ul>
+             
+          </li>
+          <li><a href="#"><span>menu4</span></a>
+            
+              <ul>
+                <li><a href="#">menu4-1</a></li>
+                <li><a href="#">menu4-2</a></li>
+                <li><a href="#">menu4-3</a></li>
+              </ul>
+             
+          </li>				
+  
+        </ul>
+
+
+    </nav>
+
+    <!-- <h2 class="blind">sns</h2>
+    <ul class="sns clear">
+      <li><a href="">Youtube</a></li>
+      <li><a href="">FACEBOOK</a></li>
+      <li><a href="">KAKAO</a></li>
+    </ul> -->
+
+    <div class="login_info login_info_pc">
+      <%= console.log(user) %>
+      <% if (user) { %>
+        <!-- 사용자가 로그인한 경우 -->
+        <button id="myPageBtn">
+          <i class="fa-solid fa-user"></i>
+          내정보
+        </button>
+        <button id="logoutBtn">
+          <i class="fa-solid fa-power-off"></i>
+          로그아웃
+        </button>
+        <%# if (user.chk === 1) { %>
+          <!-- <button>화면관리</button> -->
+        <%# } %>
+      <% } else { %>
+        <!-- 사용자가 로그인하지 않은 경우 -->
+        <button id="signupBtn">
+          <i class="fa-solid fa-user"></i>
+          회원가입
+        </button>
+        <button id="loginBtn">
+          <i class="fa-solid fa-power-off"></i>
+          로그인
+        </button>
+      <% } %>
+    </div>
+  </div>
+
+</header></div>
+<div id="overlay"></div> <!-- 오버레이 요소 추가 -->
+<div id="mobile_v">
+  <div id="close_btn">
+    <img src="./img/close_btn.png" alt="" id="close_btn_img">
+  </div>
+  <div>
+    <div id = "m_login_area">
+      <div>
+        <i class="fa-solid fa-power-off"></i>
+        로그인
+      </div>
+      <div>
+        <i class="fa-solid fa-user"></i>
+        회원가입
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  </header></div>
+  <main>
+    <div class="cont">
+      <img src="./img/main.JPG" alt="" class="main_img">
+    </div>
+
+<!-- Carousel HTML 구조 -->
+<div class="weather-carousel">
+  <% weatherData.forEach(function(data) { %>
+    <div class="city_weather">
+      <h3 style="text-align: center;"><%= data.city %></h2>
+      <img src="https://openweathermap.org/img/wn/<%= data.icon %>@2x.png" alt="<%= data.weather %> 아이콘">
+      <p>온도: <%= data.temperature %>°C</p>
+    </div>
+  <% }); %>
+</div>
+
+
+</div>
+    <div id="cont_detail_1">
+      <div id="cont_detail_1a">
+        <div id="cont_detail_1_bg">
+          <img src="./img/main_1.jpg" alt="">
+        </div>
+        <div id="cont_detail_1_txt">
+          <div id = "cont_detail_1_txta">
+            <strong>ABOUT BLUE WHALE</strong>
+            <p class="ft_pp">프리다이빙 전문 교육센터</p>
+            <p class="ft_p"> 
+              <i class="fas fa-check-circle" style="color: green;"></i>
+              자유롭게 다이빙 한다는 의미로 수중에서 무호흡 상태로 즐기기 위한 다양한 방법들을 배우고, 트레이닝을 함으로써 안전하게 다이빙을 할수 있도록 합니다.
+            </p> 
+            <p>
+              <i class="fas fa-check-circle" style="color: green;"></i>
+              프리다이빙 교육 이외에 국내, 해외 투어에 참여하여 신비로운 바다속을 경험 하실수 있습니다. 해외 투어인 경우 따뜻한 바다에서 다이빙을 즐기실수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id = "cont_detail_2">
+      디테일 2 영역
+      <br/>dd
+      <br/>dd
+      <br/>dd
+      <br/>dd
+    </div>
+
+    
+  </main>
+</body>
+<!-- Slick JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<!-- Slick 초기화 스크립트 -->
+<script>
+  $(document).ready(function(){
+    $('.weather-carousel').slick({
+      infinite: true,            // 무한 루프 설정
+      slidesToShow: 5,           // 한 번에 3개 아이템을 표시
+      slidesToScroll: 1,         // 한 번에 1개씩 스크롤
+      autoplay: true,            // 자동 슬라이드 전환
+      autoplaySpeed: 3000,       // 3초마다 슬라이드 전환
+      dots: false,                // 페이지네이션 점 표시
+      arrows: false,              // 좌우 네비게이션 화살표 표시
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 4,     // 화면 크기가 768px 이하일 때 2개씩 표시
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,     // 화면 크기가 480px 이하일 때 1개씩 표시
+          }
+        }
+      ]
+    });
+  });
+</script>
+</html>

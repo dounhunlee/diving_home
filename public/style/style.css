@@ -1,0 +1,370 @@
+
+#login_info {
+    margin-top: 80px;
+    padding-top: 30px;
+
+}
+
+#login_area {
+    text-align: center; 
+}
+#login_title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.input_style input {
+    width: 360px;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border:  1px solid #d0d3db;
+    
+      
+}
+
+.btn_login {
+    width: 360px;
+    height: 45px;
+}
+
+
+
+
+
+
+
+
+
+html {
+    height: 100%;
+}
+
+/* 기본 상태: 오른쪽에 숨기기 */
+#mobile_v {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    transition: right 0.5s ease; /* 열리고 닫힐 때 애니메이션 */
+    z-index: 99999; /* 햄버거 메뉴와 오버레이보다 위에 위치 */
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+/* 오른쪽에서 슬라이드로 열리는 상태 */
+#mobile_v.open {
+    
+    right: 0px;
+}
+/* 닫힌 상태일 때 오른쪽으로 이동 */
+#mobile_v:not(.open) {
+  right: -350px; /* 오른쪽으로 슬라이드하여 숨김 */
+}
+
+/* 햄버거 버튼 기본 숨김 */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    z-index: 998; /* 항상 최상단에 위치하게 */
+    
+}
+
+/* 화면 너비 1260px 이하에서 스타일 조정 */
+@media (max-width: 1260px) {
+    .gnb_pc, .login_info_pc {
+        display: none; /* nav와 login_info 숨김 */
+    }
+    
+    .hamburger {
+        display: flex; /* 햄버거 버튼 보이기 */
+        align-items: center;
+        position: absolute;
+        
+        right: 40px;
+        height: 80px;
+    }
+    .hamburger >i {
+        font-size: 40px;
+    }
+
+}
+
+
+/* 오버레이 기본 숨김 설정 */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* 흐림 효과 */
+    z-index: 9999; /* 모바일 메뉴보다 아래 */
+    display: none; /* 기본적으로 숨김 */
+}
+
+/* 모바일 메뉴가 열릴 때 오버레이 표시 */
+#overlay.show {
+    display: block;
+}
+
+
+#close_btn {
+position: relative;
+width: 100%;
+height: 90px;
+}
+#close_btn > img {
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    width: 40px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+#m_login_area {
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+#m_login_area div {
+    border: 1px solid;
+    padding: 10px 20px;
+    line-height: 30px; 
+}
+#m_login_area > div:first-child {
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+#m_menu {
+    padding-left: 10px;
+}
+
+#m_menu ul {
+    list-style-type: none;
+    padding: 0;
+    color: #666;
+    padding-bottom: 15px;
+  }
+#m_menu span {
+    color: black;
+    font-size: 19px;
+    height: 40px;
+}  
+  .m_submenu {
+    display: none; /* 처음엔 숨김 */
+    margin-left: 10px; /* 하위 메뉴 들여쓰기 */
+    
+  }
+  .m_submenu.show { 
+    display: block; /* .show가 추가될 때 표시 */
+  }
+  .m_submenu li {
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 0;
+  }
+  .m_menu_link {
+    display: block;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+   
+  }
+ .li_border_btm {
+    border-bottom: 1px solid red;
+    box-sizing: border-box;
+    width: 95%;
+ }
+
+
+  /* 전체 캐러셀을 가운데 정렬 */
+  .weather-carousel {
+    display: flex;
+    justify-content: center; /* 캐러셀 전체를 가운데 정렬 */
+    width: 100%; /* 필요에 따라 조정 */
+    margin: 5px auto; /* 수평 가운데 정렬 */
+    flex-wrap: wrap; /* 여러 개의 카드가 한 줄에 나열될 수 있도록 설정 */
+    gap: 20px; /* 카드 사이 간격 */
+  }
+
+  /* 각 도시 날씨 카드 스타일 */
+  .city_weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 가운데 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    text-align: center;
+    padding: 10px;
+    margin: 0 5px;
+    box-shadow: 0 4px 8px rgba(220, 223, 240, 0.1);
+    border-radius: 8px;
+    background-color: #78b6f3a1; /* 배경색 추가 */
+    width: 120px; /* 카드 너비 설정 */
+  }
+
+  /* 이미지 크기와 간격 조정 */
+  .city_weather img {
+    width: 80px; /* 이미지 크기 조정 */
+    
+    display: block; /* 이미지를 블록 요소로 설정 */
+    margin-left: auto; /* 왼쪽 여백 자동 설정 */
+    margin-right: auto; /* 오른쪽 여백 자동 설정 */
+  }
+
+
+
+
+
+
+
+.form_title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+  #join_area form {
+    display: flex;
+    flex-direction: column;
+  }
+  #join_area {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding-top: 30px;
+    
+  }
+  #join_area label {
+    width: 120px;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: left;
+
+  
+  }
+
+  #join_area input {
+    height: 50px;
+    border: 0px;
+    border-bottom: 1px solid #dadada;
+    box-sizing: border-box;
+    border-radius: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  .input_l {
+    width: calc(100% - 124px);
+
+  }
+  .input_s {
+    width: calc(100% - 233px);
+
+  }
+
+  #id_chk {
+    width: 105px;
+    height: 40px;
+    border-radius: 40px;
+    background: #000;
+    border: 0px solid #dadada;
+    border-left: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  #sex_chk {
+    width: 105px;
+    height: 50px;
+    font-size: 14px;
+  }
+  #join_submit {
+    
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    background: #000;
+    width: 100%;
+    height: 50px !important;
+    margin-top: 40px;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  #join_area ul > li > div {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .input_label {
+      width: 100%;
+    }
+    .input_s, .input_l {
+      width: 100%;
+    }
+    #id_chk {
+      position: absolute;
+      margin-top: 5px;
+      right: 5px;
+    }
+    #join_area {
+      max-width: 100%;
+      
+    }
+    #join_body {
+      padding: 0 20px;
+     
+    }
+  }
+
+
+  
+#my_info {
+  margin-top: 80px;
+  padding-top: 30px;
+
+}
+
+#m_login_area > div {
+  cursor: pointer;
+}
+
+#product_list {
+  display: flex;
+  flex-wrap: wrap; /* 줄 바꿈 설정 */
+  gap: 20px; /* 항목 간격 */
+  list-style: none; /* ul 기본 점 제거 */
+  padding: 0;
+}
+
+#product_list li {
+  flex: 0 0 calc(33.33% - 20px); /* 가로 3개로 나누기 */
+  box-sizing: border-box; /* 패딩 및 마진 포함 */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#product_list img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/gnb_all.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="./js/gnb_all.js"></script> 
+  <script src="./js/script.js"></script> 
+  <script src="./js/script_1.js"></script> 
+</head>
+<body id = "join_body">
+    <%- include('nav_component') %>
+    <div id = "join_area">
+        <div class = "form_title">회원가입</div>
+    <form action="/join" method="POST" id = "join_form">
+        <ul>
+            <li>
+                <div>
+                    <label for="id" class="input_label">아이디</label>
+                    <input type="text" id="id" name="id"
+                    class="input_s" placeholder="아이디" required>
+                    <button id = "id_chk">중복체크</button>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <label for="pwd" class="input_label">비밀번호</label>
+                    <input type="password" id="pwd" name="pwd" class="input_l" placeholder="비밀번호" required>
+                </div>
+            </li>   
+            <li>
+                <div>
+                    <label for="pwd" class="input_label">비밀번호 확인</label>
+                    <input type="password" id="pwd_chk" name="pwd_chk" class="input_l"placeholder="비밀번호 확인" required>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <label for="name" class="input_label">이름</label>
+                    <input type="text" id="name" name="name" class="input_l" placeholder="이름" required>
+                </div>
+            </li>       
+
+            <li>
+                <div>
+                    <label for="name" class="input_label">생일</label>
+                    <input type="text" id="birth" name="birth" 
+                    class="input_s" placeholder="1990.05.05 (숫자만 입력)" required>
+                    <select id = "sex_chk" name="sex">
+                        <option value="m">남성</option>
+                        <option value="f">여성</option>
+                    </select>
+                </div>
+            </li>          
+            <button type="submit" id = "join_submit">회원가입</button>
+        </ul>
+
+      </form>
+    </div>
+</body>
+<script>
+document.getElementById("id_chk").addEventListener("click", async function () {
+    const id = document.getElementById("id").value;
+    if (!id) { // ID 입력 필드가 비어 있는 경우
+        alert("아이디를 입력해주세요.");
+        return; // 아래 코드를 실행하지 않음
+    }
+    // 영문자와 숫자로만 구성된지 검사하는 정규식
+    const validIdPattern = /^[a-zA-Z0-9]+$/;
+    if (!validIdPattern.test(id)) {
+        alert("아이디는 영문자, 숫자만 입력해주세요.");
+        return;
+    }
+    try {
+        const response = await fetch(`/join/id_chk?id=${encodeURIComponent(id)}`);
+        const data = await response.json();
+
+        if (data.available) {
+            alert("사용 가능한 아이디입니다.");
+        } else {
+            alert("다른 아이디를 사용해주세요.");
+            return;
+        }
+    } catch (error) {
+        console.error('ID 중복 체크 오류:', error);
+        alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    }
+});
+
+document.getElementById("birth").addEventListener("input", function () {
+    let input = this.value;
+    
+    // 숫자만 남기기
+    input = input.replace(/\D/g, '');
+
+    // 연월일 포맷으로 변환 (0000.00.00 형식)
+    if (input.length >= 5 && input.length <= 6) {
+        input = input.slice(0, 4) + '.' + input.slice(4, 6);
+    } else if (input.length > 6) {
+        input = input.slice(0, 4) + '.' + input.slice(4, 6) + '.' + input.slice(6, 8);
+    }
+    
+    this.value = input;
+});
+
+// 비밀번호 != 비밀번호체크 일때
+document.getElementById("join_form").addEventListener("submit", function(event) {
+    const pwd = document.getElementById("pwd").value;
+    const pwdChk = document.getElementById("pwd_chk").value;
+
+    if (pwd !== pwdChk) {
+        alert("입력하신 비밀번호가 다릅니다.");
+        event.preventDefault(); // 폼 제출 방지
+    }
+});
+</script>
+</html>

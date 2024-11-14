@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style/gnb_all.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="./js/gnb_all.js"></script> 
+  <script src="./js/script.js"></script> 
+  <script src="./js/script_1.js"></script> 
+</head>
+
+
+
+
+
+
+
+
+
+
+
+  <body id = "join_body">
+    <%- include('nav_component') %>
+    <div id = "join_area">
+        <div class = "form_title">회원정보수정</div>
+    <form action="/my" method="POST">
+        <ul>
+            <li>
+                <div>
+                    <label for="id" class="input_label">아이디</label>
+                    <input type="text" id="id" name="id"
+                    class="input_s" value="<%= user.usr_id %>" 
+                    style="background-color: #eee;" readonly>
+                    <button id = "id_chk" disabled style="background-color: gray; cursor: not-allowed;">중복체크</button>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <label for="pwd" class="input_label">비밀번호</label>
+                    <input type="password" id="pwd" name="pwd" class="input_l" placeholder="비밀번호" required>
+                </div>
+            </li>   
+            <li>
+                <div>
+                    <label for="pwd" class="input_label">비밀번호 확인</label>
+                    <input type="password" id="pwd_chk" name="pwd_chk" class="input_l"placeholder="비밀번호 확인" required>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <label for="name" class="input_label">이름</label>
+                    <input type="text" id="name" name="name" class="input_l" placeholder="이름" value="<%= user.usr_name %>" style="background-color: #eee;" readonly>
+                </div>
+            </li>       
+
+            <li>
+                <div>
+                    <label for="name" class="input_label">생일</label>
+                    <input type="text" id="birth" name="birth" 
+                    class="input_s" placeholder="1990.05.05 (숫자만 입력)" required>
+                    <select id = "sex_chk" name="sex">
+                        <option value="m">남성</option>
+                        <option value="f">여성</option>
+                    </select>
+                </div>
+            </li>          
+            <button type="submit" id = "join_submit">수정완료</button>
+        </ul>
+
+      </form>
+    </div>
+</body>
+
+`
+<script>
+  document.getElementById("birth").addEventListener("input", function () {
+    let input = this.value;
+    
+    // 숫자만 남기기
+    input = input.replace(/\D/g, '');
+
+    // 연월일 포맷으로 변환 (0000.00.00 형식)
+    if (input.length >= 5 && input.length <= 6) {
+        input = input.slice(0, 4) + '.' + input.slice(4, 6);
+    } else if (input.length > 6) {
+        input = input.slice(0, 4) + '.' + input.slice(4, 6) + '.' + input.slice(6, 8);
+    }
+    
+    this.value = input;
+});
+</script>
+</html>

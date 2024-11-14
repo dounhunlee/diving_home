@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+   
+}
+
+ul, li {
+    list-style: none;
+    
+}
+
+a {
+    text-decoration: none;
+    
+}
+.blind {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px,1px,1px,1px);
+}
+.clear::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.header-container {
+    position: relative; /* header의 상위 요소 */
+}
+header {
+    z-index: 9999;
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 80px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.9);
+    /* linear-gradient(
+        rgb(24, 19, 19) 80px,
+        rgba(255,255,255,0.5) 50px,
+        rgba(255,255,255,0.5)
+); */
+    
+}
+
+.inner {
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    position: absolute;
+    left: 50px;
+}
+
+/* 주메뉴 */
+nav {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+
+    
+}
+
+.gnb {
+    display: flex;
+    justify-content: center;
+}
+.gnb > li {
+    float: left;
+    line-height: 80px;
+    text-align: center;
+   
+}
+
+.gnb > li a {
+    padding: 0 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.gnb > li a span {
+    position: relative;
+    display: inline-block; /* 또는 block */
+    width: 100px; /* 이제 너비가 적용됩니다 */
+}
+
+.gnb > li > ul > li a {
+    width: 100px; /* 하위 메뉴 항목의 너비 설정 */
+    padding: 0px 20px; /* 패딩 설정 */
+    display: block; /* 블록 요소로 만들어 너비가 적용되도록 함 */
+    
+}
+
+
+/* hover 시 배경색 추가 */
+.gnb > li:hover > a   {
+   
+    color: #25aade; /* 텍스트 색상을 하얀색으로 변경 (선택 사항) */
+    
+}
+.gnb > li a {
+    position: relative;
+    padding: 13px 20px;
+}
+
+.gnb > li > ul > li:hover a {
+    font-weight: bolder;
+    color: #25aade;
+}
+
+.gnb > li > ul > li {
+    height: 50px; /* 높이를 50px로 설정 */
+    line-height: 50px; /* 텍스트 수직 정렬을 위해 line-height를 50px로 설정 */
+}
+
+
+nav > ul > li ul {
+    width: 100%;
+}
+
+
+--------------------
+
+
+
+.cont {
+    position: relative; /* 자식 요소의 절대 위치를 위한 기준 설정 */
+    width: 100%; /* 필요한 너비 설정 */
+    height: 100vh; /* 화면의 전체 높이 사용 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 메인 이미지 영역 및 로그인 */
+.cont {
+    display: flex;
+}
+.main_img {
+    width: 100%;
+}
+.login_info {
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    align-items: center;
+}
+.login_info > button {
+    width: 80px;
+    height: 40px;
+    background-color: #6d65e4; /* 버튼 배경색 */
+    color: white; /* 텍스트 및 아이콘 색상 */
+    border: none; /* 테두리 제거 */
+    border-radius: 8px; /* 버튼 모서리 둥글게 */
+    padding: 5px 5px; /* 상하, 좌우 여백 */
+    font-weight: bold;
+    cursor: pointer; /* 커서 변경 */
+
+}
+.login_info > button:nth-child(2) {
+    margin-left: 20px;
+}
+.inner {
+    /* background-color: #9f9bb8; */
+}
+.logoImg {
+   height: 80px;
+   display: flex;
+   align-items: center;
+}
+#logo_area {
+    position: absolute;
+
+    left: 30px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* 메인 텍스트 영역 */
+#cont_detail_1 {
+    height: 700px;
+    width: 100%;
+   
+    background: #f3f3f3;
+}
+#cont_detail_1a {
+    width: 100%;
+    position: relative;
+    display: flex; /* Flexbox 활성화 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    justify-content: center; /* 세로 가운데 정렬 */
+    height: 100%; /* flex 컨테이너의 전체 높이 사용 */
+}
+#cont_detail_1_bg > img {
+    position: absolute;
+    height: 700px;
+    top: 0;
+    right: 0;
+}
+
+#cont_detail_1_txt {
+   
+    width: 60%;
+    margin-left: 50px; /* 왼쪽에서 50px 떨어뜨리기 */
+    position: absolute;
+    top: 100px;
+}
+#cont_detail_1_txta {
+    background-color: white;
+    padding: 40px;
+    
+}
+
+#cont_detail_1_txta strong {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+.ft_p {
+    display: block;
+    margin-bottom: 10px;
+}
+.ft_pp {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+@media (max-width: 1260px) {
+    #cont_detail_1_txta {
+        padding: 30px;
+        
+    }
+    #cont_detail_1_txta strong {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    .ft_pp {
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+    .ft_p {
+        font-size: 14px;
+    }
+}
