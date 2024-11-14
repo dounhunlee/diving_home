@@ -69,7 +69,7 @@ async function startServer() {
   // EJS 템플릿 엔진 설정
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, 'views'));
-
+  app.set('views', __dirname + '/views');
   // 라우터 설정
   const homeRouter = require('./routes/homeRouter');
   app.use('/', homeRouter(connection));
