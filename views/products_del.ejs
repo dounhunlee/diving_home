@@ -30,8 +30,8 @@
                   이미지 없음
                 <% } %>
               </p>
-              <p>상품명 : <%= product.product_name %></p>
-              <p>가격 : <%= product.price %></p>
+              <p><%= product.product_name %></p>
+              <p><%= Number(product.price).toLocaleString() %> 원</p>
             </li>
           <% }); %>
         </ul>
