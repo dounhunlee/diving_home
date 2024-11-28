@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>BlueWhale 프리다이브</title>
   <link rel="stylesheet" href="./style/gnb_all.css">
   <link rel="stylesheet" href="./style/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -24,33 +24,58 @@
 
 
 
-  <body id = "join_body">
+  <body id = "reg">
+    <%- include('nav_component') %>
+    <div class="div_area reg">
     <!-- 상품 등록 폼 -->
-    <form action="/products_reg" method="POST" enctype="multipart/form-data">
-      <div>
-          <label for="product_name">상품명:</label>
-          <input type="text" id="product_name" name="product_name" required>
-      </div>
+      <form action="/products_reg" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="product_name">상품명</label>
+            <input type="text" id="product_name" name="product_name" required>
+        </div>
 
-      <div>
-          <label for="price">가격:</label>
-          <input type="number" id="price" name="price" required>
-      </div>
+        <div>
+            <label for="price">가격</label>
+            <input type="text" id="price" name="price" required>
+        </div>
 
-      <div>
-          <label for="description">설명:</label>
-          <textarea id="description" name="description" required></textarea>
-      </div>
+        <div>
+            <label for="description">설명</label>
+            <textarea class="description" name="description" required></textarea>
+        </div>
 
-      <div>
-          <label for="product_img">상품 이미지:</label>
-          <input type="file" id="product_img" name="product_img">
-      </div>
+        <div>
+            <label for="product_img">상품 이미지</label>
+            <input type="file" id="product_img" name="product_img">
+        </div>
 
-      <button type="submit">등록</button>
-  </form>
+        <button type="submit">등록</button>
+      </form> 
+  </div>
 </body>
 
+<script>
+  const priceInput = document.getElementById("price");
 
+// 숫자에 쉼표 추가 함수
+function formatNumberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+priceInput.addEventListener("input", function () {
+  // 숫자만 남기기
+  const valueWithoutCommas = this.value.replace(/[^0-9]/g, "");
+
+  // 쉼표 추가된 값으로 표시
+  this.value = formatNumberWithCommas(valueWithoutCommas);
+});
+
+priceInput.addEventListener("blur", function () {
+  if (this.value === "") {
+    this.value = "0";
+  }
+});
+
+</script>
 
 </html>

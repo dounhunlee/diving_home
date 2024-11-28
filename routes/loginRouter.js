@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {getHomeData} = require('../routes/dbQuery');
-// 데이터베이스 연결 객체를 외부에서 주입받기 위해 connection 매개변수를 추가
+
+
 module.exports = (connection) => {
     
     // 로그인 페이지 렌더링
@@ -62,5 +62,5 @@ module.exports = (connection) => {
 
 
 
-    return router; // 라우터를 반환합니다.
+    return router; 
 };

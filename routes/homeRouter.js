@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const api = require('./api'); // sea_api 라우터 가져오기
+const api = require('./api'); 
 
-const axios = require('axios'); // axios 추가
+const axios = require('axios'); 
 module.exports = (connection) => {
-  router.use('/api', api); // /api 경로로 sea_api 사용
+  router.use('/api', api); 
   
   router.get('/', async (req, res) => {
     try {
@@ -17,7 +17,7 @@ module.exports = (connection) => {
     
       // 결과를 렌더링
       res.render('home', {
-        title: '메뉴 페이지',
+        title: '홈',
         user: req.session.user,
 
         weatherData: weatherData,
@@ -34,5 +34,5 @@ module.exports = (connection) => {
   });
   
 
-  return router; // 라우터를 반환합니다.
+  return router;
 };

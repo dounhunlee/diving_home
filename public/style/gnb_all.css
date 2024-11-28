@@ -129,10 +129,7 @@ nav > ul > li ul {
 
 
 .cont {
-    position: relative; /* 자식 요소의 절대 위치를 위한 기준 설정 */
-    width: 100%; /* 필요한 너비 설정 */
-    height: 100vh; /* 화면의 전체 높이 사용 */
-    overflow: hidden; /* 넘치는 부분 숨김 */
+
 }
 
 
@@ -157,9 +154,14 @@ nav > ul > li ul {
 /* 메인 이미지 영역 및 로그인 */
 .cont {
     display: flex;
+    position: relative; /* 자식 요소의 절대 위치를 위한 기준 설정 */
+    width: 100%; /* 필요한 너비 설정 */
+    height: 100vh; /* 화면의 전체 높이 사용 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
 }
 .main_img {
     width: 100%;
+    
 }
 .login_info {
     height: 80px;

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// 데이터베이스 연결 객체를 외부에서 주입받기 위해 connection 매개변수를 추가
 module.exports = (connection) => {
 
   // 마이페이지 화면 렌더링
@@ -28,7 +27,7 @@ module.exports = (connection) => {
     }
   });
   router.post('/', async (req, res) => {
-    const { id, pwd, birth, sex } = req.body; // 성별 값도 추가로 받음
+    const { id, pwd, birth, sex } = req.body; 
     console.log("body : ",req.body)
     try {
         const sql = `
@@ -50,5 +49,5 @@ module.exports = (connection) => {
         res.send("<script>alert('회원가입에 실패했습니다.'); window.history.back();</script>");
     }
 });
-  return router; // 라우터를 반환
+  return router; 
 };

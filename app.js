@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8001;
+const port = 3000;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
@@ -73,16 +73,25 @@ async function startServer() {
   // 라우터 설정
   const homeRouter = require('./routes/homeRouter');
   app.use('/', homeRouter(connection));
+  const contactRouter = require('./routes/contactRouter');
+  app.use('/contact', contactRouter(connection));
   const loginRouter = require('./routes/loginRouter');
   app.use('/login', loginRouter(connection));
   const joinRouter = require('./routes/joinRouter');
   app.use('/join', joinRouter(connection));
   const mypageRouter = require('./routes/mypageRouter');
   app.use('/my', mypageRouter(connection));
+  const mypageDelRouter = require('./routes/mypageDelRouter');
+  app.use('/my_del', mypageDelRouter(connection));
+  const productsCtlRouter = require('./routes/productsCtlRouter');
+  app.use('/products_ctl', productsCtlRouter(connection));
   const productsRouter = require('./routes/productsRouter');
   app.use('/products', productsRouter(connection));
+  const productsDelRouter = require('./routes/productsDelRouter');
+  app.use('/products_del', productsDelRouter(connection));
   const productsRegRouter = require('./routes/productsRegRouter');
   app.use('/products_reg', productsRegRouter(connection));
+
 
   // 전역 로그아웃 경로 추가
   app.get('/logout', (req, res) => {

@@ -255,7 +255,7 @@ height: 90px;
     display: inline-block;
     box-sizing: border-box;
     text-align: left;
-
+    
   
   }
 
@@ -304,6 +304,15 @@ height: 90px;
     height: 50px !important;
     margin-top: 40px;
   }
+  #del_submit {
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    background: #f83737;
+    width: 100%;
+    height: 30px !important;
+    margin-top: 20px;
+  }
   button {
     cursor: pointer;
   }
@@ -349,6 +358,7 @@ height: 90px;
 #product_list {
   display: flex;
   flex-wrap: wrap; /* 줄 바꿈 설정 */
+  justify-content: center;
   gap: 20px; /* 항목 간격 */
   list-style: none; /* ul 기본 점 제거 */
   padding: 0;
@@ -361,10 +371,127 @@ height: 90px;
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
+  cursor: pointer;
 }
-
+@media (max-width: 890px) {
+  #product_list li {
+    flex: 0 0 calc(50% - 20px); 
+  }
+}
 #product_list img {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
+}
+#all_btn {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+  height: 40px;
+}
+#del_btn {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+  height: 40px;
+}
+.div_area {
+  position: relative;
+ 
+  margin: 0 auto;
+  margin-top: 80px;
+  padding-top: 30px;
+  
+}
+
+.ctl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.ctl > button {
+  width: 70%;
+  margin-top: 30px;
+  height: 80px;
+  background-color: aquamarine;
+  font-weight: bold;
+}
+
+.reg form {
+  border: 1px solid black;
+}
+.reg {
+  
+  width: 90%;
+  padding-top: 30px;
+}
+.reg > form > div {
+  display: flex;
+  flex-direction: column;
+}
+.reg div input {
+  height: 30px;
+}
+.reg button {
+  margin-top: 50px;
+  width: 100%;
+  height: 60px;
+  background-color: aquamarine;
+  font-weight: bold;
+}
+
+#reg label {
+height: 30px;
+display: flex;
+align-items: center; 
+background-color: #84f793;
+}
+.description {
+  resize: none;
+  height: 100px;
+  width: 100%; 
+}
+
+#contact_area form {
+  display: flex;
+  flex-direction: column;
+}
+#contact_area {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding-top: 30px;
+  
+}
+#contact_area label {
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: left;
+  
+
+}
+
+#contact_area input {
+  height: 50px;
+  border: 0px;
+  border-bottom: 1px solid #dadada;
+  box-sizing: border-box;
+  border-radius: 0;
+  padding: 0;
+  font-size: 14px;
+  width: 100%;
+}
+#contact_area textarea {
+  border: 1px solid #dadada;
+} 
+
+
+#contact_area li:nth-child(2), 
+#contact_area li:nth-child(3), 
+#contact_area li:nth-child(4) {
+  margin-top: 30px;
 }

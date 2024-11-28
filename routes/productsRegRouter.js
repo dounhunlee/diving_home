@@ -30,9 +30,27 @@ const upload = multer({
 });
 
 
-    // 로그인 페이지 렌더링
+
 router.get('/', async (req, res) => {
-  res.render('products_reg'); // join.ejs를 렌더링
+  try {
+    // 세션에 로그인된 사용자가 있는지 확인
+    if (!req.session.user) {
+      // 로그인되지 않은 상태에서 마이페이지에 접근하면 로그인 페이지로 리다이렉트
+      return res.redirect('/login');
+    }
+
+    // 로그인된 사용자 정보 가져오기
+    const user = req.session.user;
+    
+    res.render('products_reg', {
+      title: '상품등록',
+      user: user, 
+    });
+
+  } catch (error) {
+    console.error('Error while fetching data:', error);
+    res.send("<script>alert('로딩이 지연되고 있습니다. 잠시 후에 다시 시도해 주세요.'); window.location.href = '/';</script>");
+  }
 });
 // 상품 등록 처리
 router.post('/', upload.single('product_img'), async (req, res) => {
@@ -46,21 +64,22 @@ router.post('/', upload.single('product_img'), async (req, res) => {
       product_img = imgData.toString('base64'); // Base64 인코딩
       fs.unlinkSync(req.file.path); // 임시 파일 삭제
     }
-
+    // 쉼표 제거 후 숫자 변환
+    const price_num = parseFloat(price.replace(/,/g, ''));
     const sql = `
         INSERT INTO products (product_name, price, description, product_img)
         VALUES (?, ?, ?, ?)
     `;
 
     // 데이터베이스에 상품 정보 저장
-    const [result] = await connection.execute(sql, [product_name, price, description, product_img]);
+    const [result] = await connection.execute(sql, [product_name, price_num, description, product_img]);
 
-    res.send("<script>alert('상품이 등록되었습니다.'); window.location.href = '/products';</script>");
+    res.send("<script>alert('상품이 등록되었습니다.'); window.location.href = '/products_reg';</script>");
   } catch (error) {
     console.error('상품 등록 오류:', error);
     res.send("<script>alert('상품 등록에 실패했습니다.'); window.history.back();</script>");
   }
 });
 
-  return router; // 라우터를 반환
+  return router; 
 };
