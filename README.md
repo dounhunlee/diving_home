@@ -1,6 +1,6 @@
 ## 사용 언어
 
-EJS, NODEJS
+EJS, NODEJS, JAVASCRIPT
 
 ## 📝 소개
 
